@@ -1,0 +1,30 @@
+var
+  a, b, c: integer;
+  D, x1, x2: real;
+begin
+  writeln('Введите коэффициенты квадратного уравнения: ');
+  readln(a, b, c);
+  D:=sqr(b) - 4*a*c;
+   if D < 0 then writeln('Корней нет!')
+     else if D = 0 then
+     begin
+       x1:=-c / b;
+       writeln('Корень: ', x1:0:2);
+     end
+     else
+     begin
+       x1:=(-b + sqrt(D)) / 2*a;
+       x2:=(-b - sqrt(D)) / 2*a;
+       writeln('x1 = ', x1:0:2);
+       writeln('x2 = ', x2:0:2);
+     end;
+   if a < 0 then writeln('случай вещественных корней')
+    else if b < 0 then writeln('случай вещественных корней')
+    else if c < 0 then writeln('случай вещественных корней')
+    else if D < 0 then writeln('случай комплексных корней')
+    else if x1 = 0 then writeln('нулевой корень')
+    else if x2 = 0 then writeln('нулевой корень')
+    else if a = 0 then writeln('неквадратное уравнение')
+    else if b = 0 then writeln('неквадратное уравнение')
+    else if c = 0 then writeln('неквадратное уравнение')
+end.

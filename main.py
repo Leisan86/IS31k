@@ -2,39 +2,36 @@ from math import sqrt
 from typing import NoReturn
 
 
-def work7__1() -> NoReturn:
+def work7__1() -> str:
     a, b, c = map(int, input("Введите три числа через пробел: ").split())
     D: int = b ** 2 - 4 * a * c
 
     if not a and not b:
-        print("Неразрешимое уравнение")
+        return "Неразрешимое уравнение"
     elif not a:
-        print("Неквадратное уравнение")
+        return "Неквадратное уравнение"
     elif D < 0:
-        print("Случай комплексных корней")
+        return "Случай комплексных корней"
     elif not b and not c:
-        print("Нулевые корни: x1 = 0\n x2 = 0")
-    elif D > 0:
-        print(f"x1: {(-b + sqrt(D)) / (2 * a)}\nx2: {(-b - sqrt(D)) / (2 * a)}")
-    elif not D:
-        print(f"x: {-b / 2 * a}")
-
-
-def work7__2() -> NoReturn:
-    work7__1()
+        return "x1 = 0\n x2 = 0"
+    else:
+        if D > 0:
+            return f"x1 = {(-b + sqrt(D)) / (2 * a)}\nx2 = {(-b - sqrt(D)) / (2 * a)}"
+        elif not D:
+            return f"x = {-b / (2 * a)}"
 
 
 def work7__3() -> NoReturn:
     s1, s2 = map(str, input("Введите две строки через пробел: ").split())
 
-    count: int = 0
-    ind: int = 1
-    while ind != -1:
-        ind = s1.find(s2)
-        if ind >= 0:
-            count += 1
-        s1 = s1[ind + 1:]
-    print(f"Вывод: {str(count)}")
+    result: int = 0
+    counter: int = 1
+    while counter != -1:
+        counter = s1.find(s2)
+        if counter >= 0:
+            result += 1
+        s1 = s1[counter + 1:]
+    return f"Вывод: {str(result)}"
 
 
 def work8__1() -> NoReturn:
@@ -44,41 +41,40 @@ def work8__1() -> NoReturn:
               'Q': 41, 'R': 42, 'S': 43, 'T': 44, 'U': 45,
               'V': 51, 'W': 52, 'X': 53, 'Y': 54, 'Z': 55,
               }
-    vr: str = input("Что вы хотите сделать?\n1) Зашифровать\n2) Расшифровать\nВаш выбор: ")
+    choice: str = input("Что вы хотите сделать?\n1) Зашифровать\n2) Расшифровать\nВаш выбор\033[34m:\033[0m ")
 
-    match vr:
+    match choice:
         case "1":
-            strng: str = input("Введите строчку: ").upper()
-
-            mess: str = ''
-            list_mess: list = list(strng)
-            for i in strng:
+            string = input("Введите строчку\033[34m:\033[0m ").upper()
+            result: str = ''
+            list_mess: list = list(string)
+            for i in string:
                 if i in square:
-                    mess += str(square.get(i, 0))
+                    result += str(square.get(i, 0))
                 elif i not in square:
-                    print('Введите корректные данные')
-                    break
+                    return "Введите корректные данные"
                 else:
-                    mess += (i + i)
+                    result += (i + i)
 
-            with open(".last string", "w") as file:
-                file.write(mess)
+            with open(".cipher", "w") as file:
+                file.write(result)
                 file.close()
-            print("Шифр записан в файл \".last string\"")
+
+            return f"Шифр записан в файл \"\033[32m.cipher\033[0m\" как {result}"
+
         case "2":
-            with open(".last string", "r") as file:
-                intgr: str = file.read()
+            with open(".cipher", "r") as file:
+                integer: str = file.read()
                 file.close()
 
-            if not intgr.isnumeric():
-                print("Введите числа!")
-                quit()
+            if not integer.isnumeric():
+                return "Введите числа!"
             else:
-                ss: str = ''
-                list_ss: list = []
+                result: str = ''
+                list_ss: list = list()
                 step: int = 2
-                for i in range(0, len(intgr), 2):
-                    list_ss.append(intgr[i:step])
+                for i in range(0, len(integer), 2):
+                    list_ss.append(integer[i:step])
                     step += 2
                 list_ss: list = list(map(int, list_ss))
                 key_square: list = list(square.keys())
@@ -87,38 +83,49 @@ def work8__1() -> NoReturn:
                 for i in list_ss:
                     if i in val_square:
                         i = val_square.index(i)
-                        ss += key_square[i]
+                        result += key_square[i]
                     elif i not in val_square:
-                        print("Введите числа!")
+                        return "Введите числа!"
                     else:
-                        ss += i[0:1]
-                print(ss)
+                        result += i[0:1]
+
+                return f"\033[32m{result}\033[0m"
         case _:
-            print("Ошибка!")
-
-
-def work8__2() -> NoReturn:
-    work8__1()
+            return "\033[31mОшибка!\033[0m"
 
 
 def work8__3() -> NoReturn:
-    print("Будет в отчете")
+    return "Будет в отчете"
 
 
-if __name__ == '__main__':
-    variant = input("Введите вариант(7-8): ")
+def main() -> NoReturn:
+    variant = input("Введите вариант(7-8)\033[34m:\033[0m ")
     match variant:
         case "7":
-            work = input("Введите задание(1-3): ")
+            work = input("Введите задание(1-3)\033[34m:\033[0m ")
 
             match work:
                 case "1":
-                    work7__1()
+                    print(work7__1())
                 case "2":
-                    work7__2()
+                    print(work7__1())
                 case "3":
-                    work7__3()
+                    print(work7__3())
                 case _:
-                    print("Нет такого варианта")
+                    print("\033[31mОшибка!\033[0m")
         case "8":
-            work8__1()
+            work = input("Введите задание(1-3)\033[34m:\033[0m ")
+
+            match work:
+                case "1":
+                    print(work8__1())
+                case "2":
+                    print(work8__1())
+                case "3":
+                    print(work8__3())
+                case _:
+                    print("\033[31mОшибка!\033[0m")
+
+
+if __name__ == "__main__":
+    main()

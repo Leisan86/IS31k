@@ -4,7 +4,7 @@ from cipher import Cipher
 
 
 def main() -> NoReturn:
-    choice: str = input("Что вы хотите сделать?\n1) Зашифровать\n2) Расшифровать\nВаш выбор: ")
+    choice: str = input("Что вы хотите сделать?\n1) Зашифровать\n2) Расшифровать\nВаш выбор\033[34m:\033[0m ")
     match choice:
         case "1":
             print(Cipher.encryption(input("Введите строчку: ")))

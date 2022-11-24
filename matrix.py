@@ -1,5 +1,6 @@
 from random import randint
 
+
 def create_matrix(h: int, w: int) -> str:
     counter: int = 1
     number_of_elements: int = h * w

@@ -1,11 +1,15 @@
+from typing import NoReturn
+
 import matrix
 
+
+def main() -> NoReturn:
+    w, h = map(int, input("Введите длину и ширину матрицы через пробел\033[34m:\033[0m ").split())
+
+    variable = matrix.create_matrix(h, w)
+
+    print(variable, '\n', matrix.maximum_element(variable))
+
+
 if __name__ == "__main__":
-    w = int(input("Введите длину матрицы: "))
-    h = int(input("Введите ширину матрицы: "))
-
-    matrx = matrix.create_matrix(h, w)
-    
-    print(matrx) # вывод самой матрицы
-
-    print(matrix.maximum_element(matrx)) # вывод максимального элемента матрицы
+    main()

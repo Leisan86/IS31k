@@ -1,6 +1,12 @@
+from typing import NoReturn
+
 from quadratic_equation import QuadraticEquation
 
-if __name__ == '__main__':
-    quadraticEquation = QuadraticEquation()
+
+def main() -> NoReturn:
     a, b, c = list(map(int, input("Введите три числа через пробел: ").split()))
-    print(quadraticEquation.work7__1(a, b, c))
+    print(QuadraticEquation.rooting(a, b, c))
+
+
+if __name__ == "__main__":
+    main()

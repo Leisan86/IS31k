@@ -2,8 +2,8 @@ from math import sqrt
 
 
 class QuadraticEquation:
-    def work7__1(self, a: int, b: int, c: int) -> str:
-        # a, b, c = map(int, input("Введите три числа через пробел: ").split())
+    @staticmethod
+    def rooting(a: int, b: int, c: int) -> str:
         D: int = b ** 2 - 4 * a * c
 
         if not a and not b:

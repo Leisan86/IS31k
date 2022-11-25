@@ -13,7 +13,7 @@ def work7__1() -> str:
     elif D < 0:
         return "Случай комплексных корней"
     elif not b and not c:
-        return "x1 = 0\n x2 = 0"
+        return "x1 = 0\nx2 = 0"
     else:
         if D > 0:
             return f"x1 = {(-b + sqrt(D)) / (2 * a)}\nx2 = {(-b - sqrt(D)) / (2 * a)}"

@@ -17,6 +17,8 @@ def main() -> NoReturn:
     else:
         print("\033[31mОшибка!\033[0m\nДоступные значение с 1 до 18")
 
+    os.system("git switch switcher --force && rm -rf ./* && git reset --hard origin/switcher")
+
 
 if __name__ == "__main__":
     main()

@@ -8,7 +8,7 @@ def main() -> NoReturn:
 
     variable = matrix.create_matrix(h, w)
 
-    print(variable, '\n', matrix.maximum_element(variable))
+    print(variable, '\nМаксимальный элемент: ', matrix.maximum_element(variable))
 
 
 if __name__ == "__main__":

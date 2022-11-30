@@ -7,7 +7,7 @@ def create_matrix(h: int, w: int) -> str:
     result: str = ''
 
     for i in range(number_of_elements):
-        matrix_element: str = str(randint(-100, 100))
+        matrix_element: str = str(randint(10, 99))
         if counter == w:
             result += f"{matrix_element}\n"
             counter = 1

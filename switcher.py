@@ -17,6 +17,7 @@ def main() -> NoReturn:
     else:
         print("\033[31mОшибка!\033[0m\nДоступные значение с 1 до 18")
 
+    print("Выполнение switcher.py окончено. Возращение на ветку \033[33mswitcher\033[0m")
     os.system("git switch switcher --force && rm -rf ./* && git reset --hard origin/switcher")
 
 
